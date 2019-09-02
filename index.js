@@ -30,6 +30,22 @@ const validators = {
 			}
 		}
 	},
+	adkim: {
+		description: 'Specifies “Alignment Mode” for DKIM signatures. Authorized values: “r”, “s”. “r”, or “Relaxed Mode”, allows Authenticated DKIM d= domains that share a common Organizational Domain with an email’s “header-From:” domain to pass the DMARC check. “s”, or “Strict Mode” requires exact matching between the DKIM d= domain and an email’s “header-From:” domain.',
+		validate(term, value) {
+			if (!/^([rs])$/i.test(value)) {
+				throw new Error(`Invalid value for '${term}': '${value}', must be one of: r, s`);
+			}
+		}
+	},
+	aspf: {
+		description: 'Specifies “Alignment Mode” for SPF. Authorized values: “r”, “s”. “r”, or “Relaxed Mode” allows SPF Authenticated domains that share a common Organizational Domain with an email’s “header-From:” domain to pass the DMARC check. “s”, or “Strict Mode” requires exact matching between the SPF domain and an email’s “header-From:” domain.',
+		validate(term, value) {
+			if (!/^([rs])$/i.test(value)) {
+				throw new Error(`Invalid value for '${term}': '${value}', must be one of: r, s`);
+			}
+		}
+	},
 	pct: {
 		description: `Percentage of messages from the Domain Owner's mail stream to which the DMARC policy is to be applied.`,
 		validate(term, value) {
@@ -63,7 +79,7 @@ const validators = {
 		}
 	},
 	rua: {
-		description: 'Addresses to which aggregate feedback is to be sent (comma-separated plain-text list of DMARC URIs',
+		description: 'Addresses to which aggregate feedback is to be sent (comma-separated plain-text list of DMARC URIs)',
 		validate(term, value) {
 			let values = value.split(/,/).map(x => x.trim());
 
