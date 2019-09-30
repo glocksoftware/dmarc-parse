@@ -17,8 +17,13 @@ const validators = {
 		// termPattern: /^fo$/,
 		description: 'Forensic reporting options. Possible values: "0" to generate reports if all underlying authentication mechanisms fail to produce a DMARC pass result, "1" to generate reports if any mechanisms fail, "d" to generate report if DKIM signature failed to verify, "s" if SPF failed.',
 		validate(term, value) {
-			if (!/^([01ds])$/i.test(value)) {
-				throw new Error(`Invalid value for '${term}': '${value}', must be one of: 0, 1, d, s`);
+			// The RFC says the values are colon-separated but a lot of examples/docs around the net show commas... so we'll do both
+			let values = value.split(/,|:/).map(x => x.trim());
+
+			for (let val of values) {
+				if (!/^([01ds])$/i.test(val)) {
+					throw new Error(`Invalid value for '${term}': '${value}', must be one of: 0, 1, d, s. Multiple values must be separated by a comma or colon.`);
+				}
 			}
 		}
 	},
@@ -65,7 +70,7 @@ const validators = {
 
 			for (let val of values) {
 				if (!/^(afrf|iodef)$/i.test(val)) {
-					throw new Error(`Invalid value for '${term}': '${value}', must be one or more of these values: afrf, iodef. Multiple values must be separated by a comma or colon`);
+					throw new Error(`Invalid value for '${term}': '${value}', must be one or more of these values: afrf, iodef. Multiple values must be separated by a comma or colon.`);
 				}
 			}
 		}
