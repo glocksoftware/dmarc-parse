@@ -162,7 +162,6 @@ function parse(policy) {
 			let settings = validators[validatorTerm];
 
 			// Term matches validaor
-			debugger;
 			let termRegex = new RegExp(`^${validatorTerm}$`, 'i');
 			if (termRegex.test(term)) {
 				found = true;
