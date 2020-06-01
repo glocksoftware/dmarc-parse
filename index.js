@@ -9,7 +9,7 @@ const validators = {
 		description: 'Protocol version',
 		validate(term, value) {
 			if (value !== 'DMARC1') {
-				throw new Error(`Invalid DMARC version: '${value}'`);
+				throw new Error(`Invalid DMARC version: '${value}', doesn't start with 'v=DMARC1'`);
 			}
 		}
 	},
