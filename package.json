@@ -1,6 +1,6 @@
 {
   "name": "@glocksoftware/dmarc-parse",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parse DMARC policy strings",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/softvu/dmarc-parse.git"
+    "url": "git+https://github.com/glocksoftware/dmarc-parse.git"
   },
   "keywords": [
     "dmarc",
@@ -25,9 +25,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/softvu/dmarc-parse/issues"
+    "url": "https://github.com/glocksoftware/dmarc-parse/issues"
   },
-  "homepage": "https://github.com/softvu/dmarc-parse#readme",
+  "homepage": "https://github.com/glocksoftware/dmarc-parse#readme",
   "devDependencies": {
     "ava": "^0.17.0",
     "coveralls": "^2.11.15",
