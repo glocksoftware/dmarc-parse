@@ -1,5 +1,5 @@
 {
-  "name": "dmarc-parse",
+  "name": "@glocksoftware/dmarc-parse",
   "version": "1.0.3",
   "description": "Parse DMARC policy strings",
   "main": "index.js",
